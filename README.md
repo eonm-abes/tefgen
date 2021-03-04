@@ -83,9 +83,9 @@ Selectors can have a quantifier operator `[DIGIT]`. Qualifier operators are incl
 
 ### Basic value susbitutions
 
+This transformation will replace the value of all pm:bar nodes with "My new value" :
 
 ```
-// This transformation will replace the value of all pm:bar nodes with "My new value".
 let transformation = {
 	"pm:bar": "My new value"
 }
@@ -95,21 +95,21 @@ let transformation = {
 
 __Array substitution based :__
 
+This transformation will modifiy the first and the second nodes but not the following nodes if any.
+
 ```node
 let transformation = {
 	"pm:bar": ["new value of first pm:bar", "new value of second pm:bar"]
 }
 ```
 
-The first and the second node are modified but not the following if any.
+This transformation will let the second node untouched but will modify the first and the third.
 
 ```node
 let transformation = {
 	"pm:bar": ["new value of  first pm:bar", new KeepNode, "new value of third pm:bar"]
 }
 ```
-
-The second node stays untouched but the first and the third are modified
 
 __Array substitution based with a default value :__
 
@@ -127,7 +127,7 @@ The first and the second nodes are modified and all other matchin nodes are dele
 
 This transformation will delete all pm:bar nodes :
 
-```
+```node
 let transformation = {
 	"pm:bar": new DeleteNode
 }
@@ -137,14 +137,12 @@ let transformation = {
 
 `KeepNode` objects are used to keep nodes untouched. It's only usefull with array based modifications :
 
-```
+```node
 // This transformation will delete all pm:bar nodes.
 let transformation = {
-	"pm:bar": [ new KeepNode, "new value of second pm:bar"]
+	"pm:bar": [ new KeepNode, "new value of second pm:bar" ]
 }
 ```
-
-
 
 ## Postman integration
 
